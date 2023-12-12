@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  database:
+    image: postgres:latest
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_DB: database
+      POSTGRES_USER: username
+      POSTGRES_PASSWORD: password
+
+    healthcheck:
+      test: ["CMD", "pg_isready", "-q", "-d", "postgres", "-U", "username"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  node_app:
+    build:
+      context: .
+    ports:
+      - '3000:3000'
+    depends_on:
+      - database
+    expose:
+      - 5432:5432
+    environment:
+      DATABASE_URL: 'postgres://username:password@database:5432/database'
+    command: npm start
