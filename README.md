@@ -1,6 +1,4 @@
-# .
-
-WebApp
+# WebApp
 
 ## Quick Start
 
@@ -8,13 +6,7 @@ Get started developing...
 
 ```shell
 # install deps
-npm install
-
-# run in development mode
-npm run dev
-
-# run tests
-npm run test
+docker-compose up --build
 ```
 
 ---
@@ -34,13 +26,6 @@ Runs the application is development mode. Should not be used in production
 ```shell
 npm run dev
 ```
-
-or debug it
-
-```shell
-npm run dev:debug
-```
-
 #### Run in *production* mode:
 
 Compiles the application and starts it in production production mode.
